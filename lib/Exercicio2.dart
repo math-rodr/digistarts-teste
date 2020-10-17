@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:conversor/conversor.dart';
+import 'package:conversor/conversor.dart'; //plugin utilizado para a conversão de números binários, decimais e hexadecimais.
 
 class Segundo extends StatefulWidget {
   @override
@@ -11,10 +11,10 @@ class _SegundoState extends State<Segundo> {
   TextEditingController _controllerPrimeiro = TextEditingController();
   TextEditingController _controllerOperador = TextEditingController();
   TextEditingController _controllerSegundo = TextEditingController();
-  String _textoResultado = "";
-  dynamic _resultado = 0;
+  String _textoResultado = ""; // campo para exibir o resultado
+  dynamic _resultado = 0; //dynamic pois a variável precisava se modificar em cada resultado, para não ocasionar erros de conversão
 
-  void _limparCampos() {
+  void _limparCampos() { // função para limpar os campos ao clicar no botão de calcular
     _controllerPrimeiro.text = "";
     _controllerOperador.text = "";
     _controllerSegundo.text = "";
@@ -24,9 +24,9 @@ class _SegundoState extends State<Segundo> {
     num _primeiroNum = num.tryParse(_controllerPrimeiro.text);
     num _segundoNum = num.tryParse(_controllerSegundo.text);
     String operador = _controllerOperador.text;
-
-    if (_primeiroNum == null || _segundoNum == null) {
-      setState(() {
+ 
+    if (_primeiroNum == null || _segundoNum == null) { //if para verificar se estão preenchidos corretamente os campos e, depois, realizar a verificação de qual a operação
+      setState(() {                                     // matemática está sendo realizada durante calculo.
         _textoResultado = "Verifique os números digitados";
       });
     } else {
@@ -133,7 +133,7 @@ class _SegundoState extends State<Segundo> {
                   textColor: Colors.white,
                   padding: EdgeInsets.all(15),
                   child: Text(
-                    "Calcular e converter",
+                    "Calcular e converter", // calcula e já converte o número, exibindo a resposta logo abaixo
                     style: TextStyle(fontSize: 22),
                   ),
                   onPressed: _calcular,
